@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ItemCount from "./ItemCount";
+import { CartContext } from "../context/CartContext";
 
 export default function ItemDetail({ item }) {
+  const { carrito, setCarrito } = useContext(CartContext);
+  console.log("carrito", carrito);
+
   const [cantidad, setCantidad] = useState(1);
 
   const handleRestar = () => {
@@ -12,7 +16,16 @@ export default function ItemDetail({ item }) {
   };
 
   const handleAgregar = () => {
-    console.log("item", { ...item, cantidad });
+    const itemAgregado = { ...item, cantidad };
+    const nuevoCarrito = [...carrito];
+    const estaEnElCarrito = nuevoCarrito.find((producto) => producto.id === itemAgregado.id);
+
+    if (estaEnElCarrito) {
+      estaEnElCarrito.cantidad += cantidad;
+    } else {
+      nuevoCarrito.push(itemAgregado);
+    }
+    setCarrito(nuevoCarrito);
   };
 
   return (
