@@ -5,8 +5,10 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
 import Nosotros from "./components/Nosotros";
 import Contacto from "./components/Contacto";
+import { useState } from "react";
 
 function App() {
+  const [carrito, setCarrito] = useState({});
   return (
     <div>
       <BrowserRouter>
