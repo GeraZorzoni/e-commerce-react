@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
+const carritoInicial = JSON.parse(localStorage.getItem("carrito")) || [];
+
 export const CartProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(carritoInicial);
   const agregarAlcarrito = (item, cantidad) => {
     const itemAgregado = { ...item, cantidad };
     const nuevoCarrito = [...carrito];
@@ -29,8 +31,19 @@ export const CartProvider = ({ children }) => {
     setCarrito([]);
   };
 
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }, [carrito]);
+
   return (
-    <CartContext.Provider value={{ carrito, agregarAlcarrito, cantidadEnCarrito, precioTotal, vaciarCarrito }}>
+    <CartContext.Provider
+      value={{
+        carrito,
+        agregarAlcarrito,
+        cantidadEnCarrito,
+        precioTotal,
+        vaciarCarrito,
+      }}>
       {children}
     </CartContext.Provider>
   );
