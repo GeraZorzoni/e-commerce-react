@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget";
 
 function Navbar() {
   return (
@@ -46,6 +47,9 @@ function Navbar() {
           <Link to='/contacto' className='menu-link'>
             Contacto
           </Link>
+        </li>
+        <li>
+          <CartWidget />
         </li>
       </ul>
     </nav>
