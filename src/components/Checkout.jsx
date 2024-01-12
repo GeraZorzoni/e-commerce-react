@@ -22,6 +22,7 @@ export default function Checkout() {
 
     addDoc(pedidosRef, pedido).then((doc) => {
       setPedidoId(doc.id);
+      vaciarCarrito();
     });
   };
 
