@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
@@ -7,7 +8,6 @@ import Nosotros from "./components/Nosotros";
 import Contacto from "./components/Contacto";
 import Carrito from "./components/Carrito";
 import Checkout from "./components/Checkout";
-import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (

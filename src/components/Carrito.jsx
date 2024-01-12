@@ -23,8 +23,12 @@ export default function Carrito() {
       {carrito.length > 0 ? (
         <>
           <h2>Precio Total: ${precioTotal()} </h2>
-          <button onClick={handleVaciar}>Vaciar</button>
-          <Link to='/checkout'>Finalizar Compra</Link>
+          <button className='agregar-al-carrito' onClick={handleVaciar}>
+            Vaciar
+          </button>
+          <Link to='/checkout' className='agregar-al-carrito'>
+            Finalizar Compra
+          </Link>
         </>
       ) : (
         <h2>El Carrito Esta Vacio :( </h2>
